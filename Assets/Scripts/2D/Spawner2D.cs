@@ -14,7 +14,7 @@ public class Spawner2D : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float y =Random.Range(-250f, 250f);
+        float y =Random.Range(-200f, 200f);
         this.transform.position=new Vector3(550,y,0); 
     }
 }

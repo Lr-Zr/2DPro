@@ -11,7 +11,7 @@ public class GameMgr2D : MonoBehaviour
     public int changeScene = 0;
     public int score = 0;
     public int playerHP = 100;
-    
+    public bool onred = true;
     public static GameMgr2D Instance
     {
         get

@@ -10,6 +10,7 @@ public class Popup : MonoBehaviour
     InputField inputtext = null;
     Toggle toggleBgm = null;
     public GameObject radioGroupObj = null;
+    
 
     Toggle[] togglRadio;
 
@@ -33,7 +34,8 @@ public class Popup : MonoBehaviour
 
     void onClickOk()
     {
-        titletext.text = "Ok";
+        gameObject.SetActive(false);
+        Time.timeScale = 1.0f;
     }
 
     void onClickCancle()
@@ -75,11 +77,12 @@ public class Popup : MonoBehaviour
 
         if (togglRadio[0].isOn)
         {
-            Debug.Log("1번 선택");
+
+            GameMgr2D.Instance.onred = false;
         }
         else if (togglRadio[1].isOn)
         {
-            Debug.Log("2번 선택");
+            GameMgr2D.Instance.onred = true;
         }
     }
 }

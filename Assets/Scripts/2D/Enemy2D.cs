@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class Enemy2D : MonoBehaviour
 {
-    float maxSpeed = 800f;
+    float maxSpeed = 500f;
     Rigidbody2D rigidBody;
     int hp = 0;
     float time = 0;
@@ -24,7 +24,7 @@ public class Enemy2D : MonoBehaviour
     {
         Move_1();
         time += Time.deltaTime;
-        if (time > 2.0)
+        if (time > 1.2)
         {
             Instantiate(bullet, transform.position, transform.rotation);
             time = 0;
@@ -67,7 +67,10 @@ public class Enemy2D : MonoBehaviour
     {
         if (collision.tag == "Bullet")
         {
+
             hp -= 30;
+
+            
         }else if(collision.tag =="Bolt")
         {
             hp -= 100;

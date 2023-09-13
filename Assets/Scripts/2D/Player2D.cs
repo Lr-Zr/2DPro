@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,6 +14,7 @@ public class Player2D : MonoBehaviour
 
     public GameObject bullet = null;
     public GameObject bolt = null;
+    public GameObject shield = null;
     public Image imgHPBar = null;
     public Image imgGage = null;
 
@@ -21,22 +23,24 @@ public class Player2D : MonoBehaviour
 
     float time = 0;
     float ftime = 0;
+    float attacktime = 0;
     float gagetime = 0;
 
- 
+
     bool hitted = false;
     bool energy = false;
 
     // Start is called before the first frame update
     void Start()
     {
-
         rigidBody = GetComponent<Rigidbody2D>();
         circleCollider = GetComponent<CircleCollider2D>();
         renderer = GetComponent<SpriteRenderer>();
-      
+
         time = 0;
         hitted = false;
+
+        shield.SetActive(false);
     }
 
     // Update is called once per frame
@@ -55,18 +59,23 @@ public class Player2D : MonoBehaviour
 
 
         //>>공격>>>
+        attacktime -= Time.deltaTime;
         if (Input.GetKeyDown("k"))
         {
-            if (time > 0.2)
+            if (attacktime < 0)
             {
-                Instantiate(bullet, transform.position, transform.rotation);
-                time = 0;
+                var a = Instantiate(bullet, transform.position, transform.rotation);
+                if (!GameMgr2D.Instance.onred)
+                    a.GetComponent<SpriteRenderer>().color = new Color(0, 0, 255, 1);
+                attacktime = 0.6f;
             }
-            gagetime += 10;
         }
         if (Input.GetKeyDown("j") && energy)
         {
-            Instantiate(bolt, transform.position, transform.rotation);
+
+            var a = Instantiate(bolt, transform.position, transform.rotation);
+            if (!GameMgr2D.Instance.onred)
+                a.GetComponent<SpriteRenderer>().color = new Color(0, 0, 255, 1);
             gagetime = 0;
             energy = false;
         }
@@ -74,10 +83,13 @@ public class Player2D : MonoBehaviour
         //<<<<<
         ShowHPBar(GameMgr2D.Instance.playerHP);// 현재 hp
 
-    
+
         if (time >= ftime + 3f)
         {
-            circleCollider.enabled = true;
+
+            hitted = false;
+            if (shield)
+                shield.SetActive(false);
         }
         if (!energy)
         {
@@ -127,6 +139,7 @@ public class Player2D : MonoBehaviour
             position.y = 200;
 
         rigidBody.MovePosition(position);
+
     }
     void Flip_2D(float x)
     {
@@ -150,16 +163,22 @@ public class Player2D : MonoBehaviour
         if (collision.tag == "Enemy" && !hitted)
         {
             GameMgr2D.Instance.playerHP -= 40;
-             ftime = time;
-            circleCollider.enabled = true;
+            ftime = time;
+
+            hitted = true;
+            if(shield)
+            shield.SetActive(true);
+
+
         }
 
         else if (collision.tag == "BulletE" && !hitted)
         {
-
             GameMgr2D.Instance.playerHP -= 20;
             ftime = time;
-            circleCollider.enabled = true;
+            hitted = true;
+            if (shield)
+                shield.SetActive(true);
         }
         else if (collision.tag == "Coin")
         {

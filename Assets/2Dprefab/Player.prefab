@@ -270,7 +270,7 @@ GameObject:
   - component: {fileID: 8042085665497716911}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -415,5 +415,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 239105595935475401, guid: f3cf68ae4972094438e8822ad0a09163, type: 3}
   bolt: {fileID: 4052673463328416827, guid: 0e67eb475ba41d743b280ee41203aaff, type: 3}
+  shiled: {fileID: 1258224676973205390, guid: b338342f55008294da31e842ed55c842, type: 3}
   imgHPBar: {fileID: 1362607608}
   imgGage: {fileID: 872875010}

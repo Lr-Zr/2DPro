@@ -793,6 +793,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popupObj: {fileID: 673402793}
   scoreText: {fileID: 527954496}
+  End: {fileID: 0}
 --- !u!1 &527954494
 GameObject:
   m_ObjectHideFlags: 0

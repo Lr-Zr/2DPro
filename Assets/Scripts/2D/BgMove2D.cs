@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BgMove2D : MonoBehaviour
 {
-    float maxSpeed = 200f;
+    float maxSpeed = 100f;
     // Start is called before the first frame update
     void Start()
     {
