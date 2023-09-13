@@ -4,17 +4,18 @@ using UnityEngine;
 
 public class Bullet2D : MonoBehaviour
 {
-    GameObject obj;
-
-    float maxSpeed = 1000f;
+    GameObject Player;
+    public GameObject hit;
+    float maxSpeed = 1300f;
     Rigidbody2D rigidBody;
     float time = 0;
     // Start is called before the first frame update
     void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
-        obj = GameObject.Find("Player");
-        this.transform.position=new Vector3(obj.transform.position.x+120,obj.transform.position.y,obj.transform.position.z);
+
+        Player = GameObject.Find("Player");
+        this.transform.position=new Vector3(Player.transform.position.x+120, Player.transform.position.y, Player.transform.position.z);
      
     }
 
@@ -34,7 +35,16 @@ public class Bullet2D : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Enemy")
+        {
+            Destroy(this.gameObject);
+            Instantiate(hit, transform.position, transform.rotation);
+            GameMgr2D.Instance.score += 10;
+        }
+
+    }
 
 
-   
 }

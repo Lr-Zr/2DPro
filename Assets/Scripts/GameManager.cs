@@ -9,7 +9,7 @@ using UnityEngine.SubsystemsImplementation;
 
 public class GameManager : MonoBehaviour
 {
-
+    
     private static GameManager sInstance;
     // Start is called before the first frame update
     

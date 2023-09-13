@@ -28,6 +28,7 @@ public class FlappyGame : MonoBehaviour
     }
     private void OnGUI()
     {
+        
         if (GameManager.Instance.changeScene == 0)
         {
             if (!timeon&&GUI.Button(new Rect(100, 200, 200, 30), "Start"))
