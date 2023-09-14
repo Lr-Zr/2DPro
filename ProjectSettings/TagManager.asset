@@ -10,6 +10,7 @@ TagManager:
   - Coin
   - BulletE
   - Bolt
+  - Sword
   layers:
   - Default
   - TransparentFX
