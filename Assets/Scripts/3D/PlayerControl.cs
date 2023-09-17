@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
-{
+{ 
     Animation spartanKing;
-
+    
 
     public AnimationClip IDLE;
     public AnimationClip RUN;
@@ -13,7 +13,7 @@ public class PlayerControl : MonoBehaviour
 
     ///
     CharacterController pcControl;
-    public float runSpeed = .0f;
+    public float runSpeed = 10.0f;
     Vector3 velocity;
 
 
@@ -21,7 +21,7 @@ public class PlayerControl : MonoBehaviour
     public GameObject objSword = null;
 
 
-
+   
 
 
 
@@ -36,6 +36,7 @@ public class PlayerControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
          AnimationPlay_3();   
       //  CharacterControl();
         CharacterControl_Slerp();

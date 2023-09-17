@@ -11,6 +11,8 @@ TagManager:
   - BulletE
   - Bolt
   - Sword
+  - ESword
+  - Wall
   layers:
   - Default
   - TransparentFX
