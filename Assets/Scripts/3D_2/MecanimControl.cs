@@ -44,7 +44,7 @@ public class MecanimControl : MonoBehaviour
     {
         if (bDead) return;
 
-        Input_Animation();
+       // Input_Animation();
         CharacterController_Slerp();
         //if (Input.GetKeyDown(KeyCode.LeftControl) && !bAttack)
         //{
