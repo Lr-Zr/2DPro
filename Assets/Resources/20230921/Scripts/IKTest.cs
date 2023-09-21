@@ -175,15 +175,17 @@ public class IKTest : MonoBehaviour
 
     private void poschange()
     {
-        Vector3 rhpos = rhObj.position;
-        Vector3 lhpos = lhObj.position;
-        Vector3 rlpos = rlObj.position;
-        Vector3 llpos = llObj.position;
-
-        rhpos.y -= dirrh * 2f * Time.deltaTime;
-        lhpos.y -= dirlh * 2f * Time.deltaTime;
-        rlpos.y -= dirrl * 2f * Time.deltaTime;
-        llpos.y -= dirll * 2f * Time.deltaTime;
+        Vector3 opos = this.transform.position;
+        Vector3 rhpos = rhObj.localPosition;
+        Vector3 lhpos = lhObj.localPosition;
+        Vector3 rlpos = rlObj.localPosition;
+        Vector3 llpos = llObj.localPosition;
+      
+        
+        rhpos.y -= dirrh * 2f * Time.deltaTime* Input.GetAxis("Vertical");
+        lhpos.y -= dirlh * 2f * Time.deltaTime* Input.GetAxis("Vertical");
+        rlpos.y -= dirrl * 2f * Time.deltaTime* Input.GetAxis("Vertical");
+        llpos.y -= dirll * 2f * Time.deltaTime * Input.GetAxis("Vertical");
 
         if (rhpos.y < 2.0f)
         {
@@ -234,15 +236,16 @@ public class IKTest : MonoBehaviour
 
 
 
-        rhObj.position = rhpos;
-        lhObj.position = lhpos;
-        rlObj.position = rlpos;
-        llObj.position = llpos;
+        rhObj.localPosition = rhpos;
+        lhObj.localPosition = lhpos;
+        rlObj.localPosition = rlpos;
+        llObj.localPosition = llpos;
 
     }
 
     private void OnAnimatorIK(int layerIndex)
     {
+        
         if (animator != null)
         {
             if (rlObj != null && llObj != null && rhObj != null && lhObj != null)
