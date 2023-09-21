@@ -13,6 +13,7 @@ TagManager:
   - Sword
   - ESword
   - Wall
+  - Ground
   layers:
   - Default
   - TransparentFX
