@@ -8,7 +8,7 @@ public class GameMgr3D_3 : MonoBehaviour
     private static GameMgr3D_3 sInstance;
     public int cnt = 101;
     public int score = 0;
-    
+
     public static GameMgr3D_3 Instance
     {
         get
@@ -45,5 +45,9 @@ public class GameMgr3D_3 : MonoBehaviour
         SceneManager.LoadScene(sceneName);
         cnt = 101;
         score = 0;
-}
+    }
+
+
+
+    public string nextSceneName;
 }
